@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Google Form Trigger</title>
+  <title>Uber Panda Adventure</title>
   <style>
     body {
       font-family: sans-serif;
@@ -23,21 +23,37 @@
     button:hover {
       background-color: #e0e0e0;
     }
+    #submitted-msg {
+      color: white;
+      font-size: 18px;
+      margin-top: 20px;
+      display: none;
+    }
   </style>
 </head>
 <body>
   <h1>Click the button to notify me!</h1>
 
-  <!-- Hidden form targeting the Google Form endpoint -->
   <form id="notify-form"
         action="https://docs.google.com/forms/d/e/1FAIpQLSdpmnQi1ZldZmeToArUG29RGLKUq9OhBDE_e13PmgNN0Wxlsg/formResponse"
         method="POST"
-        target="hidden_iframe">
-    <input type="hidden" name="entry.1487501381" value="Button submission">
+        target="hidden_iframe"
+        onsubmit="handleSubmit()">
+    <input type="hidden" name="entry.1487501381" id="form-message" value="Started!!">
     <button type="submit">Start</button>
   </form>
 
-  <!-- Hidden iframe to prevent page reload -->
+  <p id="submitted-msg">✅ Submitted!</p>
+
   <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <script>
+    function handleSubmit() {
+      // Wait a second to simulate "submission"
+      setTimeout(() => {
+        document.getElementById("submitted-msg").style.display = "block";
+      }, 500);
+    }
+  </script>
 </body>
 </html>
