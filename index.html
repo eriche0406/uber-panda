@@ -5,7 +5,7 @@
   <style>
     body {
       font-family: sans-serif;
-      background-color: #7ec850;
+      background-color:#7ec850;
       text-align: center;
       margin-top: 100px;
     }
@@ -39,7 +39,7 @@
         method="POST"
         target="hidden_iframe">
     <input type="hidden" name="entry.1487501381" id="form-message" value="Started!!">
-    <button type="submit">Start</button>
+    <button type="button" id="start-button">Start</button>
   </form>
 
   <p id="submitted-msg"> Submitted!</p>
@@ -48,18 +48,18 @@
 
   <script>
     const form = document.getElementById("notify-form");
-    form.addEventListener("submit", function(event) {
-      event.preventDefault(); // Stop page reload
+    const button = document.getElementById("start-button");
+    const msg = document.getElementById("submitted-msg");
 
-      // Submit to Google Form via hidden iframe
-      form.submit();
+    button.addEventListener("click", () => {
+      msg.style.display = "none";  // Hide message if visible
 
-      // Show submitted message
-      document.getElementById("submitted-msg").style.display = "block";
+      form.submit();  // Submit the form to the hidden iframe
 
-      // Redirect after 1.5 seconds (adjust as needed)
+      msg.style.display = "block"; // Show submitted message
+
       setTimeout(() => {
-        window.location.href = "stage_one.html"; 
+        window.location.href = "stage_one.html";  // Redirect after 1.5 seconds
       }, 1500);
     });
   </script>
