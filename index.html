@@ -37,23 +37,31 @@
   <form id="notify-form"
         action="https://docs.google.com/forms/d/e/1FAIpQLSdpmnQi1ZldZmeToArUG29RGLKUq9OhBDE_e13PmgNN0Wxlsg/formResponse"
         method="POST"
-        target="hidden_iframe"
-        onsubmit="handleSubmit()">
+        target="hidden_iframe">
     <input type="hidden" name="entry.1487501381" id="form-message" value="Started!!">
     <button type="submit">Start</button>
   </form>
 
-  <p id="submitted-msg">✅ Submitted!</p>
+  <p id="submitted-msg"> Submitted!</p>
 
   <iframe name="hidden_iframe" style="display:none;"></iframe>
 
   <script>
-    function handleSubmit() {
-      // Wait a second to simulate "submission"
+    const form = document.getElementById("notify-form");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // Stop page reload
+
+      // Submit to Google Form via hidden iframe
+      form.submit();
+
+      // Show submitted message
+      document.getElementById("submitted-msg").style.display = "block";
+
+      // Redirect after 1.5 seconds (adjust as needed)
       setTimeout(() => {
-        document.getElementById("submitted-msg").style.display = "block";
-      }, 500);
-    }
+        window.location.href = "stage_one.html"; 
+      }, 1500);
+    });
   </script>
 </body>
 </html>
