@@ -28,7 +28,7 @@
     font-size: 36px;
     margin-bottom: 24px;
     color: #000;
-    animation: pulse 2s infinite;
+    animation: pulse 5s infinite;
     text-shadow: 0 0 4px #f4ebeb, 0 0 8px #f4efef, 0 0 12px #f1ebeb;
     }
 
@@ -93,14 +93,9 @@
   <script>
     const form = document.getElementById("notify-form");
     const button = document.getElementById("start-button");
-    const msg = document.getElementById("submitted-msg");
 
     button.addEventListener("click", () => {
-      msg.style.display = "none";  // Hide message if visible
-
       form.submit();  // Submit the form to the hidden iframe
-
-      msg.style.display = "block"; // Show submitted message
 
       setTimeout(() => {
         window.location.href = "wordle.html";  // Redirect after 1.5 seconds
