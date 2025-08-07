@@ -32,13 +32,15 @@
   </style>
 </head>
 <body>
-  <h1>Click the button to notify me!</h1>
+  <h1>Oh no! Panda has lost his memory and all recollection of your birthday gift. We must retrace his steps and retrieve your gift! Don’t worry though, he must have left some hints along the way. Beb will be your Uber driver for the day (no tip needed!!). Let’s get started!
+    Click the button below to start!
+  </h1>
 
   <form id="notify-form"
         action="https://docs.google.com/forms/d/e/1FAIpQLSdpmnQi1ZldZmeToArUG29RGLKUq9OhBDE_e13PmgNN0Wxlsg/formResponse"
         method="POST"
         target="hidden_iframe">
-    <input type="hidden" name="entry.1487501381" id="form-message" value="Started!!">
+    <input type="hidden" name="entry.1487501381" id="form-message" value="Crystal has started the adventure quest!!">
     <button type="button" id="start-button">Start</button>
   </form>
 
@@ -59,7 +61,7 @@
       msg.style.display = "block"; // Show submitted message
 
       setTimeout(() => {
-        window.location.href = "stage_one.html";  // Redirect after 1.5 seconds
+        window.location.href = "wordle.html";  // Redirect after 1.5 seconds
       }, 1500);
     });
   </script>

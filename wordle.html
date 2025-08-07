@@ -71,7 +71,8 @@
   <p id="message"></p>
 
   <script>
-    const secretWord = "PLANT";
+    const wordList = ["LOTAD"];
+    const secretWord = wordList[Math.floor(Math.random() * wordList.length)];
     const maxGuesses = 5;
     let currentGuess = 0;
 
@@ -113,7 +114,7 @@
 
       if (guess === secretWord) {
         showMessage("🎉 You got it!");
-        setTimeout(() => window.location.href = "success.html", 1500);  // Redirect to success page
+        setTimeout(() => window.location.href = "strands.html", 3000);  // Redirect to success page
         return;
       }
 
