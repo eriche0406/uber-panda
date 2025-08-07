@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Strands Puzzle</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #7ec850;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.15);
+      padding: 40px 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #000;
+      animation: pulse 5s infinite;
+      text-shadow: 0 0 4px #f4ebeb, 0 0 8px #f4efef, 0 0 12px #f1ebeb;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      width: 80%;
+      margin-top: 12px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 12px 24px;
+      background-color: #ffffff;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #e0e0e0;
+    }
+
+    #error-msg {
+      color: #ffdddd;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Strands Challenge</h1>
+    <p>Panda needs you to solve a puzzle in the New York Times Strands game!</p>
+    <p>Click the link below and complete today’s puzzle:</p>
+    <p>
+      🔗 <a href="https://www.nytimes.com/games/strands" target="_blank" style="color: #fff; text-decoration: underline;">Go to Strands</a>
+    </p>
+    <p>Then, type the final theme you found to continue.</p>
+
+    <input type="text" id="answer" placeholder="Enter the spangram here to move on..." />
+    <br>
+    <button onclick="checkAnswer()">Submit</button>
+    <p id="error-msg">Hmm... try again?</p>
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById("answer").value.trim().toLowerCase();
+      const correct = "Relationship Firsts"; 
+
+      if (input === correct) {
+        window.location.href = "stage_three.html";
+      } else {
+        document.getElementById("error-msg").style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
