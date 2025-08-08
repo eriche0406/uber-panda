@@ -71,17 +71,18 @@
 <body>
   <div class="container">
     <h1>Uber Panda Adventure</h1>
-    <p>Wow he must have been starving after that!</p>
-    <p>We must head there now to retrace his steps. Verify your location and move on once you are finished eating!</p>
+    <p>After all that eating, he must have been going out shopping for your gifts now!</p>
+    <p>What's one place or one type of shop that you have always been telling me you want to go to! Confer with your Uber driver before telling him to leave for a location.</p>
     <button onclick="checkLocation()">Verify My Location</button>
     <p id="status"></p>
   </div>
 
   <script>
-    const allowedLatMin = 40.567456;
-    const allowedLatMax = 40.577456;
-    const allowedLngMin = -74.623838;
-    const allowedLngMax = -74.613838;
+    const allowedLatMin = 40.635274;
+    const allowedLatMax = 40.645274;
+
+    const allowedLngMin = -74.423212;
+    const allowedLngMax = -74.413212;   
 
     function checkLocation() {
       const status = document.getElementById("status");
@@ -100,7 +101,7 @@
           if (lat >= allowedLatMin && lat <= allowedLatMax && lng >= allowedLngMin && lng <= allowedLngMax) {
             status.textContent = "Location verified. Proceeding...";
             setTimeout(() => {
-              window.location.href = "shop_one.html";
+              window.location.href = "activity.html";
             }, 5000);
           } else {
             status.textContent = "Sorry, you're not in the right location to continue.";
