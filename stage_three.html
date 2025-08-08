@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,8 +71,9 @@
 <body>
   <div class="container">
     <h1>Uber Panda Adventure</h1>
-    <p>Only players in the right place can proceed!</p>
-    <button onclick="checkLocation()">Check My Location</button>
+    <p>Go to the location where most of the words from the Strands happened at.</p>
+    <p>That must be where panda went next... Click the button once you are there to check!</p>
+    <button onclick="checkLocation()">Verify My Location</button>
     <p id="status"></p>
   </div>
 
@@ -98,7 +100,7 @@
           if (lat >= allowedLatMin && lat <= allowedLatMax && lng >= allowedLngMin && lng <= allowedLngMax) {
             status.textContent = "Location verified. Proceeding...";
             setTimeout(() => {
-              window.location.href = "stage_two.html";
+              window.location.href = "house_one.html";
             }, 1000);
           } else {
             status.textContent = "Sorry, you're not in the right location to continue.";
