@@ -47,8 +47,8 @@
     }
 
     button {
-      font-size: 18px;
-      padding: 12px 24px;
+      font-size: 20px;
+      padding: 14px 28px;
       background-color: #ffffff;
       color: #333;
       border: none;
@@ -61,12 +61,6 @@
       background-color: #e0e0e0;
     }
 
-    #error-msg {
-      color: #ffdddd;
-      margin-top: 10px;
-      display: none;
-    }
-
     #status {
       font-size: 18px;
       margin-top: 20px;
@@ -77,24 +71,46 @@
 <body>
   <div class="container">
     <h1>Uber Panda Adventure</h1>
-    <p>Hopefully Panda found something good at this place! Let's hit one more nearby, just in case.</p>
-    <p>In the meantime, Panda wanted to scout out a good activity for your birthday. Enter the correct activity to move on after your done with the second shop</p>
-    <input type="text" id="answer" placeholder="Enter the correct activity to move on..." />
-    <br>
-    <button onclick="checkAnswer()">Submit</button>
-    <p id="error-msg">Hmm... try again?</p>
+    <p>Panda scouted out this great horseback riding place for you!</p>
+    <p>We must head there now to retrace his steps. Verify your location and move on once you are finished eating!</p>
+    <button onclick="checkLocation()">Verify My Location</button>
+    <p id="status"></p>
   </div>
 
   <script>
-    function checkAnswer() {
-      const input = document.getElementById("answer").value.trim().toLowerCase();
-      const correct = "horseback riding"; 
+    const allowedLatMin = 41.034272;
+    const allowedLatMax = 41.044272;
 
-      if (input === correct) {
-        setTimeout(() => window.location.href = "horsey.html", 2000);
-      } else {
-        document.getElementById("error-msg").style.display = "block";
+    const allowedLngMin = -74.417323;
+    const allowedLngMax = -74.407323;   
+
+    function checkLocation() {
+      const status = document.getElementById("status");
+      status.textContent = "Checking location...";
+
+      if (!navigator.geolocation) {
+        status.textContent = "Geolocation is not supported by your browser.";
+        return;
       }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+
+          if (lat >= allowedLatMin && lat <= allowedLatMax && lng >= allowedLngMin && lng <= allowedLngMax) {
+            status.textContent = "Location verified. Proceeding...";
+            setTimeout(() => {
+              window.location.href = "kidnapping.html";
+            }, 5000);
+          } else {
+            status.textContent = "Sorry, you're not in the right location to continue.";
+          }
+        },
+        (error) => {
+          status.textContent = "Unable to get location. Please allow location access.";
+        }
+      );
     }
   </script>
 </body>
