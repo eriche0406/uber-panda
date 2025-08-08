@@ -100,7 +100,7 @@
       const correct = "relationship firsts"; 
 
       if (input === correct) {
-        window.location.href = "first_drive.html";
+        setTimeout(() => window.location.href = "first_drive.html", 2000);
       } else {
         document.getElementById("error-msg").style.display = "block";
       }
