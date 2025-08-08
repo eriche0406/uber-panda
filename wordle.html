@@ -164,9 +164,9 @@
       input.value = "";
 
       if (currentGuess === maxGuesses) {
-        showMessage("❌ Out of guesses! The word was " + secretWord);
+        showMessage("❌ Out of guesses! Now you have to do 20 push-ups and retry!");
         input.disabled = true;
-        setTimeout(() => window.location.href = "fail.html", 3000);
+        setTimeout(() => window.location.href = "index.html", 3000);
       }
     }
 
