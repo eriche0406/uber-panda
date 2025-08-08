@@ -94,12 +94,28 @@
   <script>
     function checkAnswer() {
       const input = document.getElementById("answer").value.trim().toLowerCase();
-      const correct = "0181"; 
-
+      const correct = "0181";
+  
       if (input === correct) {
         setTimeout(() => window.location.href = "gift.html", 2000);
       } else {
-        document.getElementById("error-msg").style.display = "block";
+        const errorMsg = document.getElementById("error-msg");
+        errorMsg.style.display = "block";
+        errorMsg.textContent = "Hmm... try again?";
+        
+        document.getElementById("answer").disabled = true;
+        const btn = document.querySelector("button");
+        btn.disabled = true;
+        btn.style.opacity = 0.5;
+        btn.textContent = "Locked...";
+  
+        setTimeout(() => {
+          document.getElementById("answer").disabled = false;
+          btn.disabled = false;
+          btn.style.opacity = 1;
+          btn.textContent = "Submit";
+          errorMsg.style.display = "none";
+        }, 10000); // 10 seconds
       }
     }
   </script>
